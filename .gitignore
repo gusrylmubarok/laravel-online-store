@@ -1,3 +1,7 @@
+my_db/
+my_db
+.my_db
+
 /node_modules
 /public/build
 /public/hot
