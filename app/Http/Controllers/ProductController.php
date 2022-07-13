@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index() {
+
+    public function index()
+    {
         $viewData = [];
-        $viewData['title'] = "Products - Online Store";
-        $viewData['subtitle'] = "List of Products";
-        $viewData['products'] = Product::all();
+        $viewData["title"] = "Products - Online Store";
+        $viewData["subtitle"] =  "List of products";
+        $viewData["products"] = Product::all();
 
         return view('product.index')->with("viewData", $viewData);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $viewData = [];
         $product = Product::findOrFail($id);
-        $viewData['title'] = strtoupper($product->getName()) . " - Online Store";
-        $viewData['subtitle'] = strtoupper($product->getName()) . " - Product Information";
-        $viewData['product'] = $product;
-
+        $viewData["title"] = $product->getName()." - Online Store";
+        $viewData["subtitle"] =  $product->getName()." - Product information";
+        $viewData["product"] = $product;
+        
         return view('product.show')->with("viewData", $viewData);
     }
 }
